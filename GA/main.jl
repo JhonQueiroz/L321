@@ -60,6 +60,11 @@ function parse_command_line()
             arg_type = Int
             default = 200
 
+        "--max_stagnation"
+            help = "Número máximo de gerações sem melhoria da solução global"
+            arg_type = Int
+            default = 50
+
         "--trials"
             help = "Número de execuções independentes"
             arg_type = Int
@@ -86,6 +91,7 @@ function main()
     mutation_rate   = args["mutation_rate"]
     elitism_rate    = args["elitism_rate"]
     max_gen         = args["max_gen"]
+    max_stagnation  = args["max_stagnation"]
     trials          = args["trials"]
     output_file     = args["output"]
 
@@ -99,7 +105,8 @@ function main()
         max_gen,
         elitism_rate,
         crossover_rate,
-        mutation_rate
+        mutation_rate,
+        max_stagnation
     )
 
     # Definição dos operadores

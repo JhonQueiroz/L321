@@ -10,6 +10,7 @@ struct GA_Parameters
     elitism::Float64
     crossover::Float64
     mutation::Float64
+    max_stagnations::Int
 end
 
 # Indivíduo (cromossomo)
@@ -59,6 +60,9 @@ function run_ga_l321(params::GA_Parameters, g::AbstractGraph, distsets, seed::In
 
     # 2) avalia população inicial
     evaluate!(population, g, distsets)
+
+    # contador da estagnação
+    stagnation_count = 0
 
     # guarda melhor global
     best_global = minimum(population)
@@ -125,9 +129,15 @@ function run_ga_l321(params::GA_Parameters, g::AbstractGraph, distsets, seed::In
         best_gen = minimum(population)
         push!(best_per_gen, best_gen.fitness)
 
-        # atualiza melhor global
+        # atualiza melhor global e verifica a estagnação
         if best_gen.fitness < best_global.fitness
             best_global = best_gen
+            stagnation_count = 0;
+        else
+            stagnation_count +=1;
+        end
+        if stagnation_count >= params.max_stagnations
+            break
         end
     end
 

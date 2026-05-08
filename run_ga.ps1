@@ -10,6 +10,7 @@ param(
     [double]$MutationRate = 0.20,
     [double]$ElitismRate = 0.10,
     [int]$MaxGen = 200,
+    [int]$MaxStagnation = 100,
     [int]$Trials = 30
 )
 
@@ -99,7 +100,7 @@ if ($env:JULIA_DEPOT_PATH) {
 } else {
     Write-Info "JULIA_DEPOT    = <default>"
 }
-Write-Info "Params: seed=$Seed pop_factor=$PopFactor cx=$CrossoverRate mut=$MutationRate elit=$ElitismRate gen=$MaxGen trials=$Trials"
+Write-Info "Params: seed=$Seed pop_factor=$PopFactor cx=$CrossoverRate mut=$MutationRate elit=$ElitismRate gen=$MaxGen stagnation=$MaxStagnation trials=$Trials"
 Write-Host ""
 
 $startAll = Get-Date
@@ -157,6 +158,7 @@ foreach ($item in $instances) {
         --mutation_rate $MutationRate `
         --elitism_rate $ElitismRate `
         --max_gen $MaxGen `
+        --max_stagnation $MaxStagnation `
         --trials $Trials `
         --output $outCsv
 

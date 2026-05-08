@@ -88,6 +88,7 @@ julia --project=. --threads auto GA/main.jl \
   --mutation_rate 0.20 \
   --elitism_rate 0.10 \
   --max_gen 200 \
+  --max_stagnation 50 \
   --trials 30 \
   --output RESULTS/GA/sd_3_100.csv
 ```
@@ -121,6 +122,7 @@ Parâmetros principais do script:
 - `-MutationRate`: taxa de mutação. Padrão: `0.20`.
 - `-ElitismRate`: taxa de elitismo. Padrão: `0.10`.
 - `-MaxGen`: número máximo de gerações. Padrão: `200`.
+- `-MaxStagnation`: número máximo de gerações sem melhoria da solução global. Padrão: `100`.
 - `-Trials`: número de execuções independentes por instância. Padrão: `30`.
 
 O script procura `julia` no `PATH`. Se o `PATH` apontar apenas para o alias do
