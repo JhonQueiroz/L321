@@ -61,6 +61,18 @@ Esse comando também preenche o [Manifest.toml](Manifest.toml) com as versões e
 - `run_ga.ps1`: script de execução em lote do GA para PowerShell no Windows.
 - `run_brkga.ps1`: script de execução em lote do BRKGA para PowerShell no Windows.
 
+## Análise estrutural da base
+
+Para gerar um CSV com métricas dos grafos da base final:
+
+```bash
+julia --project=. ANALYSIS/analyze_graphs.jl --base BASE/FINAL --output RESULTS/graph_metrics.csv
+```
+
+O CSV inclui a família, o nome do grafo, o número de vértices, o número de
+arestas, a densidade, o grau máximo e o diâmetro. Para grafos desconexos, o
+diâmetro fica vazio no CSV.
+
 ## Formato das instâncias
 
 As instâncias são arquivos `.txt` em formato de lista de arestas:
