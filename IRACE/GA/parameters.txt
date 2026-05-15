@@ -1,0 +1,8 @@
+# GA parameters for irace.
+# Format: name switch type values [conditions]
+
+pop_factor       "--pop_factor "       o (2, 4, 8, 12, 16)
+crossover_rate   "--crossover_rate "   r (0.70, 1.00)
+mutation_rate    "--mutation_rate "    r (0.05, 0.40)
+elitism_rate     "--elitism_rate "     r (0.05, 0.25)
+max_stagnation   "--max_stagnation "   o (25, 50, 75, 100)
